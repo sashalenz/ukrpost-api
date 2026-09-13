@@ -12,6 +12,7 @@ use Sashalenz\UkrPostApi\ApiModels\Client\Client;
 use Sashalenz\UkrPostApi\ApiModels\Documents;
 use Sashalenz\UkrPostApi\ApiModels\Shipment\Shipment;
 use Sashalenz\UkrPostApi\ApiModels\ShipmentGroup\ShipmentGroup;
+use Sashalenz\UkrPostApi\ApiModels\ShipmentManagement\ShipmentManagement;
 use Sashalenz\UkrPostApi\ApiModels\StatusTracking\StatusTracking;
 use Sashalenz\UkrPostApi\ApiModels\Transfer;
 
@@ -60,6 +61,11 @@ final class UkrPostApi
     public static function transfers(?Credentials $credentials = null): Transfer
     {
         return Transfer::make($credentials);
+    }
+
+    public static function management(?Credentials $credentials = null): ShipmentManagement
+    {
+        return ShipmentManagement::make($credentials);
     }
 
     /**

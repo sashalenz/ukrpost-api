@@ -90,9 +90,10 @@ it('does not allow shipment postPay to exceed its declared price', function (): 
 });
 
 it('enforces postPay change range and declared price', function (): void {
+    ShipmentConstraints::validatePostPayChange(0, 100);
     ShipmentConstraints::validatePostPayChange(29999, 29999);
 
-    expect(fn () => ShipmentConstraints::validatePostPayChange(0, 100))
+    expect(fn () => ShipmentConstraints::validatePostPayChange(-0.01, 100))
         ->toThrow(UkrPostValidationException::class)
         ->and(fn () => ShipmentConstraints::validatePostPayChange(101, 100))
         ->toThrow(UkrPostValidationException::class);

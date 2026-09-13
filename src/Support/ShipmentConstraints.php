@@ -27,8 +27,9 @@ final class ShipmentConstraints
 
     public static function validatePostPayChange(float $postPay, float $declaredPrice): void
     {
-        if (! is_finite($postPay) || $postPay < 1 || $postPay > 29999) {
-            throw new UkrPostValidationException('Changed postPay must be between 1 and 29999 UAH.');
+        // Zero cancels postpay; the same management endpoint handles both correction and cancellation.
+        if (! is_finite($postPay) || $postPay < 0 || $postPay > 29999) {
+            throw new UkrPostValidationException('Changed postPay must be between 0 and 29999 UAH.');
         }
 
         if (! is_finite($declaredPrice) || $declaredPrice < 0 || $postPay > $declaredPrice) {
