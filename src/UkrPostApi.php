@@ -9,6 +9,7 @@ use Sashalenz\UkrPostApi\ApiModels\AddressClassifier;
 use Sashalenz\UkrPostApi\ApiModels\BaseModel;
 use Sashalenz\UkrPostApi\ApiModels\Calculation;
 use Sashalenz\UkrPostApi\ApiModels\Client\Client;
+use Sashalenz\UkrPostApi\ApiModels\CourierService\CourierService;
 use Sashalenz\UkrPostApi\ApiModels\Documents;
 use Sashalenz\UkrPostApi\ApiModels\Shipment\Shipment;
 use Sashalenz\UkrPostApi\ApiModels\ShipmentGroup\ShipmentGroup;
@@ -66,6 +67,11 @@ final class UkrPostApi
     public static function management(?Credentials $credentials = null): ShipmentManagement
     {
         return ShipmentManagement::make($credentials);
+    }
+
+    public static function courier(?Credentials $credentials = null): CourierService
+    {
+        return CourierService::make($credentials);
     }
 
     /**
