@@ -27,7 +27,7 @@ final readonly class Request
         private bool $binary = false,
     ) {}
 
-    /** @return Collection<int, mixed>|string */
+    /** @return Collection<array-key, mixed>|string */
     public function make(): Collection|string
     {
         $response = $this->send();
@@ -35,7 +35,7 @@ final readonly class Request
         return $this->binary ? $response->body() : $response->collect();
     }
 
-    /** @return Collection<int, mixed>|string */
+    /** @return Collection<array-key, mixed>|string */
     public function cache(int $seconds = -1): Collection|string
     {
         // Shipment state must be fresh before mutation; caching writes could also suppress real operations.

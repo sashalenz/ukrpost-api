@@ -36,7 +36,7 @@ abstract class BaseModel
 
     /**
      * @param  array<string, mixed>  $query
-     * @return Collection<int, mixed>
+     * @return Collection<array-key, mixed>
      */
     protected function get(string $path, array $query = []): Collection
     {
@@ -46,7 +46,7 @@ abstract class BaseModel
     /**
      * @param  array<array-key, mixed>|null  $payload
      * @param  array<string, mixed>  $query
-     * @return Collection<int, mixed>
+     * @return Collection<array-key, mixed>
      */
     protected function post(string $path, ?array $payload = null, array $query = []): Collection
     {
@@ -55,14 +55,14 @@ abstract class BaseModel
 
     /**
      * @param  array<array-key, mixed>|null  $payload
-     * @return Collection<int, mixed>
+     * @return Collection<array-key, mixed>
      */
     protected function put(string $path, ?array $payload = null): Collection
     {
         return $this->request('PUT', $path, $payload);
     }
 
-    /** @return Collection<int, mixed> */
+    /** @return Collection<array-key, mixed> */
     protected function delete(string $path): Collection
     {
         return $this->request('DELETE', $path);
@@ -82,7 +82,7 @@ abstract class BaseModel
     /**
      * @param  array<array-key, mixed>|null  $payload
      * @param  array<string, mixed>  $query
-     * @return Collection<int, mixed>
+     * @return Collection<array-key, mixed>
      */
     private function request(string $method, string $path, ?array $payload = null, array $query = []): Collection
     {
